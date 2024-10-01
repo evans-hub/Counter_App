@@ -1,5 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import Counter from './Counter ';
+import './index.css';
 import ThemeToggler from './ThemeToggler';
 
 const DebouncedSearch = React.lazy(() => import('./DebouncedSearch'));
