@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, Suspense } from 'react';
+import Counter from './Counter ';
+import ThemeToggler from './ThemeToggler';
 
-function App() {
+const DebouncedSearch = React.lazy(() => import('./DebouncedSearch'));
+
+const App = () => {
+  const [counterList, setCounterList] = useState([]);
+  const [showSearch, setShowSearch] = useState(false);
+
+  const handleCounterUpdate = newCount => {
+    setCounterList([...counterList, newCount]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ThemeToggler />
+      <Counter onCounterUpdate={handleCounterUpdate} />
+      <button onClick={() => setShowSearch(!showSearch)}>
+        {showSearch ? 'Hide' : 'Show'} Search
+      </button>
+      {showSearch && (
+        <Suspense fallback={<div>Loading search...</div>}>
+          <DebouncedSearch list={counterList} />
+        </Suspense>
+      )}
     </div>
   );
-}
+};
 
 export default App;
