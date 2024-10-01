@@ -27,6 +27,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 ### `CI/CD Pipeline`
-This project includes a CI/CD pipeline configured using GitHub Actions, designed to automate the testing and deployment processes. The pipeline ensures that the code is always in a deployable state and helps maintain code quality through automated testing.
+This project includes a CI/CD pipeline configured using GitHub Actions, designed to automate the testing and deployment processes. The pipeline ensures that the code is always in a deployable state and helps maintain code quality through automated testing.\
 The CI/CD configuration is located in the .github/workflows/ci.yml
 
